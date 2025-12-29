@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Helna Vika Bastian</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #c084fc, #f9a8d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            text-transform: capitalize;
+        }
+
+        .nav-links a:hover {
+            color: #c084fc;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            background: linear-gradient(#0f172a, #0f172a) padding-box,
+                        linear-gradient(to right, #a855f7, #ec4899) border-box;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #c084fc, #f9a8d4, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #c084fc;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #a855f7, #ec4899);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid #a855f7;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(168, 85, 247, 0.2);
+        }
+
+        /* Section Title */
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, #c084fc, #f9a8d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #c084fc;
+        }
+
+        .card p {
+            color: #d1d5db;
+            line-height: 1.8;
+        }
+
+        /* Hobbies Section */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .hobby-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            transition: all 0.3s;
+        }
+
+        .hobby-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: scale(1.05);
+        }
+
+        .hobby-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .hobby-content {
+            padding: 1.5rem;
+        }
+
+        .hobby-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #c084fc;
+        }
+
+        .hobby-description {
+            color: #d1d5db;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-description {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: rgba(168, 85, 247, 0.2);
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+            padding: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="scrollToSection(event, 'home')">Home</a></li>
+                <li><a href="#about" onclick="scrollToSection(event, 'about')">Tentang Saya</a></li>
+                <li><a href="#hobbies" onclick="scrollToSection(event, 'hobbies')">Hobi</a></li>
+                <li><a href="#contact" onclick="scrollToSection(event, 'contact')">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero">
+            <div class="profile-photo">
+                <img src="helna.jpeg" alt="Helna Vika Bastian">
+            </div>
+            <h1>HELNA VIKA BASTIAN</h1>
+            <p class="subtitle">Mahasiswa Informatika Semester 1</p>
+            <p class="description">
+                Mahasiswa Informatika yang sedang mengejar impian di dunia teknologi. Setiap hari adalah kesempatan baru untuk belajar dan berkembang!
+            </p>
+            <div class="btn-group">
+                <a href="#hobbies" class="btn btn-primary" onclick="scrollToSection(event, 'hobbies')">
+                    Lihat Hobi →
+                </a>
+                <a href="#contact" class="btn btn-secondary" onclick="scrollToSection(event, 'contact')">
+                    Hubungi Saya
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Tentang Saya</h2>
+            <div class="about-content">
+                <div class="card">
+                    <div class="card-icon">👩‍💻</div>
+                    <h3>Perjalanan Saya</h3>
+                    <p>
+                        Halo! Saya mahasiswa Informatika semester 1 yang lagi asik-asiknya explore berbagai bahasa pemrograman dan teknologi terbaru. 
+                        Dari front-end sampai back-end, dari desktop app sampai mobile app—semua menarik buat dipelajari! 
+                        Meskipun masih di awal perjalanan, saya punya semangat yang besar untuk terus belajar dan berkembang di dunia teknologi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies">
+        <div class="container">
+            <h2>Hobi Saya</h2>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <img src="https://d4xyvrfd64gfm.cloudfront.net/12kentang-ce92fdae-7eab-4def-a8f9-e7877a20e3c3--.20230812_121106.png" alt="Membaca" class="hobby-image">
+                    <div class="hobby-content">
+                        <h3 class="hobby-title">📚 Membaca</h3>
+                        <p class="hobby-description">
+                            Saya suka membaca novel dan komik. Membaca membawa saya ke dunia yang berbeda dan memperluas imajinasi saya.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="hobby-card">
+                    <img src="https://cms.disway.id/uploads/3f9a38c4cdd7928e94a8d54dea9868ef.png" alt="Menonton" class="hobby-image">
+                    <div class="hobby-content">
+                        <h3 class="hobby-title">🎬 Menonton</h3>
+                        <p class="hobby-description">
+                            Saya suka menonton film, drakor, dracin, kartun dan anime. Setiap genre punya daya tarik tersendiri!
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="hobby-card">
+                    <img src="https://img.okezone.com/content/2022/12/23/330/2732954/hukum-hobi-memancing-ikan-menurut-islam-JfsenNAXzl.jpg" alt="Memancing" class="hobby-image">
+                    <div class="hobby-content">
+                        <h3 class="hobby-title">🎣 Memancing</h3>
+                        <p class="hobby-description">
+                            Memancing adalah cara saya untuk bersantai dan menikmati alam. Kesabaran yang dilatih saat memancing juga berguna dalam coding!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact">
+            <h2>Mari Terhubung</h2>
+            <p class="contact-description">
+                Ingin berdiskusi tentang teknologi atau sekadar ngobrol? Jangan ragu untuk menghubungi saya!
+            </p>
+            <div class="social-links">
+                <a href="mailto:helnablt483@gmail.com" class="social-icon" title="Email">✉️</a>
+                <a href="https://github.com/" class="social-icon" title="GitHub" target="_blank">🐙</a>
+                <a href="https://www.instagram.com/helnablt483/" class="social-icon" title="Instagram" target="_blank">📷</a>
+            </div>
+            <a href="mailto:helnablt483@gmail.com" class="btn btn-primary">Kirim Email</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Helna Vika Bastian❤️</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function scrollToSection(event, id) {
+            event.preventDefault();
+            const element = document.getElementById(id);
+            element.scrollIntoView({ behavior: 'smooth' });
+            
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (!nav.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
